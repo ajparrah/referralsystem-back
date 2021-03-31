@@ -8,7 +8,12 @@ app.use(express.json()); //parse -> application/json
 app.use('/users', userRouter);
 
 const port = 8080;
-const optionsMongoose = { useNewUrlParser: true, useUnifiedTopology: true };
+const optionsMongoose = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+};
 
 mongoose
   .connect('mongodb://localhost:27017/reachyeti', optionsMongoose)
