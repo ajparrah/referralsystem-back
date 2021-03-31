@@ -7,7 +7,9 @@ app.use(express.json()); //parse -> application/json
 
 app.use('/users', userRouter);
 
-const port = 8080;
+const port = process.env.PORT || 8080;
+const uriDB = process.env.MONGODB_URI || 'mongodb://localhost:27017/reachyeti';
+
 const optionsMongoose = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -16,7 +18,7 @@ const optionsMongoose = {
 };
 
 mongoose
-  .connect('mongodb://localhost:27017/reachyeti', optionsMongoose)
+  .connect(uriDB, optionsMongoose)
   .then(() => console.log('Mongo database is online'))
   .catch((error) => console.log(error));
 
