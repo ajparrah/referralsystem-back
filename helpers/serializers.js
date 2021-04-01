@@ -10,6 +10,16 @@ const userSignUpSerializer = (user) => {
   return userToAdd;
 };
 
+const shareableLinkSerializer = (sharableLink, name, userId) => {
+  const sharableLinkToAdd = {
+    name,
+    url: sharableLink,
+    createdBy: userId,
+  };
+  return sharableLinkToAdd;
+}
+
 module.exports = {
   userSignUpSerializer,
+  shareableLinkSerializer
 };
