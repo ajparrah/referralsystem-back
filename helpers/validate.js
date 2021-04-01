@@ -33,8 +33,16 @@ const userLoginValidatePassword = (passwordToValidate, passwordDB) => {
   return result;
 }
 
+const userIsAdmin = (user) => {
+  if(user.role === 'ADMIN_ROLE' ){
+    return true;
+  }
+  return false;
+};
+
 module.exports ={
   userSignUpValidator,
   userLoginValidator,
   userLoginValidatePassword,
+  userIsAdmin
 }
