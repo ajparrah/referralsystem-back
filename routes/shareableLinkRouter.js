@@ -85,5 +85,4 @@ router.get('/:name', async (req, res) => {
     })
   }
 });
-
 module.exports = router;
