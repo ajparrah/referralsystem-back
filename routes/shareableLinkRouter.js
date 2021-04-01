@@ -53,7 +53,11 @@ router.get('/', async (req, res) => {
       })
     }
   } catch (error) {
-    console.log('Ha ocurrido un error al traer los enlaces', error);
+    return res.status(500).json({
+      ok: false,
+      msg: 'An error occurred getting the shareable link',
+      error: error.message,
+    })
   }
 });
 
