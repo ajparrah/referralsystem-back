@@ -6,12 +6,17 @@ const domainApp = process.env.URL_APP_CONNECT || 'http://localhost:3000';
 const appKeyFirebase =
   process.env.API_KEY_FIREBASE || 'AIzaSyAPUpd1i_IX7JmGYtfaKLoLNvBc9gr-hdo';
 const urlFirebase = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${appKeyFirebase}`;
+const packageName = process.env.PACKAGE_NAME_APP || 'com.reachyetiapp';
 
 const getBodyParsed = (name) => {
   const bodyParsed = JSON.stringify({
     dynamicLinkInfo: {
       domainUriPrefix: domainPrefix,
       link: `${domainApp}/${name}`,
+      androidInfo: {
+        androidPackageName: packageName,
+        androidFallbackLink: `${domainApp}/${name}/download`,
+      },
     },
     suffix: {
       option: 'SHORT',
