@@ -61,4 +61,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:name', async (req, res) => {
+  try {
+    const { name } = req.params;
+    const nameExist = await service.getByName(name);
+    if(nameExist) {
+      return res.status(200).json({
+        ok: true,
+        msg: 'This is the shareable link',
+        shareableLink: nameExist,
+      });
+    } else {
+      return res.status(404).json({
+        ok: false,
+        msg: 'This name does not exist',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      msg: 'An error occurred getting the shareable link',
+      error: error.message,
+    })
+  }
+});
 module.exports = router;
