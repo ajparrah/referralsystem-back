@@ -13,11 +13,6 @@ const ShareableLinkSchema = new Schema({
     type: String,
     required: [true, 'Url is required'],
   },
-  createdBy: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'user'
-  }
 });
 ShareableLinkSchema.plugin(uniqueValidator, {
   message: '{PATH} must be a unique value',
