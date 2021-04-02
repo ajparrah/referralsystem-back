@@ -15,7 +15,7 @@ const getBodyParsed = (name) => {
       link: `${domainApp}/${name}`,
       androidInfo: {
         androidPackageName: packageName,
-        androidFallbackLink: `${domainApp}/${name}/download`,
+        androidFallbackLink: `${domainApp}/${name}`,
       },
     },
     suffix: {
