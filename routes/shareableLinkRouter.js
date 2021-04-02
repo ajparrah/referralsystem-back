@@ -1,13 +1,11 @@
 const express = require('express');
 const { shareableLinkSerializer } = require('../helpers/serializers');
 const ShareableLinkService = require('../services/ShareableLinkService');
-// const { userLoginValidatePassword } = require('../helpers/validate');
 const generateDinamicLink = require('../api/firebaseLink');
-const { createLinkMiddlewares } = require('../routes/middlewares/shareableLinkMiddlewares');
 const router = express.Router();
 const service = new ShareableLinkService();
 
-router.post('/:name', createLinkMiddlewares, async (req, res) => {
+router.post('/:name', async (req, res) => {
   try {
     const { name } = req.params;
     const nameExist = await service.getByName(name);
