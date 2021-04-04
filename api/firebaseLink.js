@@ -7,6 +7,7 @@ const appKeyFirebase =
   process.env.API_KEY_FIREBASE || 'AIzaSyAPUpd1i_IX7JmGYtfaKLoLNvBc9gr-hdo';
 const urlFirebase = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${appKeyFirebase}`;
 const packageName = process.env.PACKAGE_NAME_APP || 'com.reachyetiapp';
+const packageNameIOS = process.env.PACKAGE_NAME_APP_IOS || 'org.reactjs.native.example.reachyetiapp';
 
 const getBodyParsed = (name) => {
   const bodyParsed = JSON.stringify({
@@ -16,6 +17,10 @@ const getBodyParsed = (name) => {
       androidInfo: {
         androidPackageName: packageName,
         androidFallbackLink: `${domainApp}/${name}`,
+      },
+      iosInfo: {
+        iosBundleId: packageNameIOS,
+        iosFallbackLink: `${domainApp}/${name}`,
       },
     },
     suffix: {
